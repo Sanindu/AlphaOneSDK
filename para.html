@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Alpha</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700">
+    <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/fonts/ionicons.min.css">
+    <link rel="stylesheet" href="assets/fonts/fontawesome5-overrides.min.css">
+    <link rel="stylesheet" href="assets/css/Article-List.css">
+    <link rel="stylesheet" href="assets/css/Contact-Form-Clean.css">
+    <link rel="stylesheet" href="assets/css/Footer-Dark.css">
+    <link rel="stylesheet" href="assets/css/Header-Blue.css">
+    <link rel="stylesheet" href="assets/css/Highlight-Blue.css">
+    <link rel="stylesheet" href="assets/css/keyboard.css">
+    <link rel="stylesheet" href="assets/css/Login-Form-Dark.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body><div class="highlight-blue">
+    <div class="container">
+        <div class="intro">
+            <h2 class="text-center">English to other Languages</h2>
+            <p class="text-center"> You can Translate English to many Languages... </p>
+        </div>
+        <div class="buttons"><a class="btn btn-primary" href="en.html">Go back</a></div>
+    </div>
+</div>
+
+<div class="container-fluid" style="margin-top: 20px;">
+        <div class="row">
+            <div class="col text-center">
+                <img src="./images/logo.png" alt="" style="width: 25%;" />
+            </div>
+        </div>
+        <br />
+        <div class="row justify-content-center">
+           
+        </div>
+        <br />
+        <div class="row justify-content-center">
+            <div class="col-5">
+                <form>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">
+                            <h5>English Text</h5>
+                        </label>
+                        <textarea class="form-control form-control-lg" id="english_text"
+                            aria-describedby="emailHelp" onclick="loadKeyboard(3,'english_text')"></textarea>
+                    </div>
+			<div class="form-group">
+                        <label for="exampleInputEmail1">
+                            <h5>Voice Interim</h5>
+                        </label>
+                        <textarea class="form-control form-control-lg" id="voice_interim"
+                            aria-describedby="emailHelp" ></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="col-4">
+                <form>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">
+                            <h5>Language</h5>
+                        </label>
+                        <select class="form-control form-control-lg" id="language" aria-describedby="emailHelp">
+                            
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">
+                            <h5>Translated Text</h5>
+                        </label>
+                        <textarea class="form-control form-control-lg" id="translated_text" aria-describedby="emailHelp"></textarea>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-3">
+                <a href="en.html" class="btn btn-primary btn-lg"><i class="fas fa-angle-left"></i></a>
+                <button class="btn btn-success btn-lg" onclick="speak('english_text')">
+                   Speak
+                </button>
+                <button class="btn btn-danger btn-lg" onclick="stop()">
+                   Stop
+                </button>
+                <button class="btn btn-primary btn-lg" onclick="loadKeyboard(3,'english_text')">
+                   Keyboard
+                </button>
+                
+            </div>
+            <div class="col-6">
+                <div id="kb"></div>
+            </div>
+        </div>
+    </div>
+    <br />
+    <footer class="footer">
+        <div class="container float-left">
+            <span class="text-muted">© 2020 - PulzTec</span>
+        </div>
+    </footer>
+    <script src="./lib/constants.js"></script>
+    <script src="./lib/app.js"></script>
+    <script src="./lib/keyboards/english.js"></script>
+    <script src="./lib/keyboard.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function (event) {
+            alphaone.validateLicence("z7TWPQowZYdKnw+N+nv0S3Rirl0C6ANbfzedqckeZq8PAEP6/cfSi+IXYAVF5x3iUN3J6xApXZ6YPD3PgUQXRl97OOyk4f1vhuQdPYVZMpIIzAnbY4Pq445YQQYrkEyTbEnDO6XzNEQKMw2YhNx/R2fArCVgqz/0+au2+Y90V0",callback);
+            // Populate language
+            LANGUAGE.map((element) => {
+                document.getElementById("language").innerHTML += `<option value="${element[0]}">${element[1]}</option>`;
+            });
+        });
+        context.resume().then(() => {
+            alphaone.audioFile("en_AudioRecording.mp3");
+        });
+        function loadKeyboard(lang, textbox) {
+            keyboard.KeyboardLayoutPlaceHolder = "kb";
+            keyboard.TextBox = textbox;
+            document.getElementById("kb").innerHTML = keyboard.getKeyboard(lang);
+        }
+        function speak(control) {
+            alphaone.longSpeech(control, "en-US");
+        }
+        function stop(){
+            alphaone.stopMic();
+            translate();
+        }
+        function translate(){
+            document.getElementById("translated_text").value = "";
+            var word = document.getElementById("english_text").value;
+            var lang = document.getElementById("language").value
+            alphaone.translate(3, lang, word, 3, "paragraph","AWS", getResponse);
+        }
+        function getResponse(){
+            var wordArray = this.response.wordList;
+            document.getElementById("translated_text").value = wordArray[0];
+        }
+    </script>
+
+
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/app.js"></script>
+    <script src="assets/js/constants.js"></script>
+    <script src="assets/js/document.js"></script>
+    <script src="assets/js/english.js"></script>
+    <script src="assets/js/englishEmail.js"></script>
+    <script src="assets/js/englishHouseNumber.js"></script>
+    <script src="assets/js/englishNIC.js"></script>
+    <script src="assets/js/englishProfession.js"></script>
+    <script src="assets/js/englishTitle.js"></script>
+    <script src="assets/js/form.js"></script>
+    <script src="assets/js/keyboard.js"></script>
+    <script src="assets/js/numberpad.js"></script>
+    <script src="assets/js/sihalaProfession.js"></script>
+    <script src="assets/js/sinhala.js"></script>
+    <script src="assets/js/sinhalaEmail.js"></script>
+    <script src="assets/js/sinhalaHouseNumber.js"></script>
+    <script src="assets/js/sinhalaNIC.js"></script>
+    <script src="assets/js/sinhalaNumberpad.js"></script>
+    <script src="assets/js/sinhalaTitle.js"></script>
+    <script src="assets/js/tamil.js"></script>
+    <script src="assets/js/tamilEmail.js"></script>
+    <script src="assets/js/tamilHouseNumber.js"></script>
+    <script src="assets/js/tamilNIC.js"></script>
+    <script src="assets/js/tamilNumberpad.js"></script>
+    <script src="assets/js/tamilProfession.js"></script>
+    <script src="assets/js/tamilTitle.js"></script>
+    <script src="assets/js/voice.js"></script>
+</body>
+
+</html>

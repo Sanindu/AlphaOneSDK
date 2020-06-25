@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Alpha</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700">
+    <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/fonts/ionicons.min.css">
+    <link rel="stylesheet" href="assets/fonts/fontawesome5-overrides.min.css">
+    <link rel="stylesheet" href="assets/css/Article-List.css">
+    <link rel="stylesheet" href="assets/css/Contact-Form-Clean.css">
+    <link rel="stylesheet" href="assets/css/Footer-Dark.css">
+    <link rel="stylesheet" href="assets/css/Header-Blue.css">
+    <link rel="stylesheet" href="assets/css/Highlight-Blue.css">
+    <link rel="stylesheet" href="assets/css/keyboard.css">
+    <link rel="stylesheet" href="assets/css/Login-Form-Dark.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body>
+    <div>
+ <link rel="stylesheet" href="assets/css/keyboard.css" />
+<div class="header-blue">
+    <nav class="navbar navbar-light navbar-expand-md navigation-clean-search">
+        <div class="container-fluid"><a class="navbar-brand" href="#">Pulz Technologies ®</a><button data-toggle="collapse" data-target="#navcol-1" class="navbar-toggler"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse"
+                id="navcol-1">
+                <ul class="nav navbar-nav">
+                    <li role="presentation" class="nav-item"></li>
+                    <li class="nav-item dropdown"><a data-toggle="dropdown" aria-expanded="false" class="dropdown-toggle nav-link" href="#"></a>
+                        <div role="menu" class="dropdown-menu"><a role="presentation" class="dropdown-item" href="#">First Item</a><a role="presentation" class="dropdown-item" href="#">Second Item</a><a role="presentation" class="dropdown-item" href="#">Third Item</a></div>
+                    </li>
+                </ul>
+                <form class="form-inline mr-auto" target="_self">
+                    <div class="form-group"><label for="search-field"></label><input type="search" class="form-control search-field" id="search-field" name="search" /></div>
+                </form><a class="btn btn-light action-button" role="button" href="index.html">Go Back</a><span class="navbar-text"></span></div>
+        </div>
+    </nav>
+    <div class="container hero">
+        <div class="row">
+            <div class="col-12 col-lg-6 col-xl-5 offset-xl-1">
+                <h1> සිංහල පරිවර්තකය </h1>
+                <p> Type your First Name here </p>
+                <button class="btn btn-light btn-lg action-button"  onclick="speak('sinhala_name')" ><i class="fas fa-microphone"></i></button>
+                <button class="btn btn-light btn-lg action-button"   onclick="loadKeyboard(1,'sinhala_name')" ><i class="fas fa-keyboard"></i></button>   
+            </div>
+            
+            <div class="col">
+                <div class="row justify-content-center">
+                    <form>
+                        <div class="form-group"><label for="exampleInputEmail1"><p>මුල් නම</p></label><input type="text" class="form-control form-control-lg" list="sinhala" id="sinhala_name"  onclick="loadKeyboard(1,'sinhala_name')" oninput="suggest()" /><datalist id="sinhala"></datalist>
+                        </div>
+                    </form>
+                </div>
+                
+                <div class="row justify-content-center">
+                    <form>
+                        <div class="form-group"><label for="exampleInputEmail1"><p>පළමු නම ඉංග්‍රීසියෙන්</p></label><input type="text" class="form-control form-control-lg" list="english" id="english_name"  onclick="loadKeyboard(3,'english_name')" /><datalist id="english"></datalist>
+                        </div>
+                    </form>
+                </div>
+                
+                <div class="row justify-content-center">
+                    <form>
+                        <div class="form-group"><label for="exampleInputEmail1"><p>දෙමළ භාෂාවෙන් පළමු නම</p></label><input type="text" class="form-control form-control-lg" list="tamil" id="tamil_name"  onclick="loadKeyboard(2,'tamil_name')" /><datalist id="tamil"></datalist>
+                        </div>
+                    </form>
+                    
+                </div>
+               
+            </div>
+             <div class="col-9">
+                    <div id="kb"></div>
+                </div>
+        </div>
+    </div>
+</div>
+
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function (event) {
+            alphaone.validateLicence("z7TWPQowZYdKnw+N+nv0S3Rirl0C6ANbfzedqckeZq8PAEP6/cfSi+IXYAVF5x3iUN3J6xApXZ6YPD3PgUQXRl97OOyk4f1vhuQdPYVZMpIIzAnbY4Pq445YQQYrkEyTbEnDO6XzNEQKMw2YhNx/R2fArCVgqz/0+au2+Y90V0",callback);
+        
+        
+        });
+
+ function callback(){
+
+       if(this.status=="OK")
+       {
+
+       }
+
+ }
+
+        context.resume().then(() => {
+            alphaone.audioFile("Si_FirstName.mp3");
+        });
+        
+        function loadKeyboard(lang, textbox) {
+            keyboard.KeyboardLayoutPlaceHolder = "kb";
+            keyboard.TextBox = textbox;
+            document.getElementById("kb").innerHTML = keyboard.getKeyboard(lang);
+
+        }
+        function speak(control) {
+            alphaone.speech(control, "si-LK");
+        }
+        function suggest() {
+            //document.getElementById("english_name").value = "";
+            document.getElementById("english").innerHTML = "";
+            document.getElementById("sinhala").innerHTML = "";
+            document.getElementById("tamil").innerHTML = "";
+            var word = document.getElementById("sinhala_name").value;
+            alphaone.suggestion(1, 1, word, getResponse);
+        }
+        function getResponse() {
+            var wordArray = this.response.wordList;
+            //document.getElementById("english_name").value = wordArray[0];
+            wordArray.forEach((element) => {
+                document.getElementById("sinhala").innerHTML +=
+                    "<option>" + element + "</option>";
+            });
+            translateToEnglish();
+            translateToTamil();
+        }
+        function translateToEnglish() {
+            document.getElementById("english_name").value = "";
+            document.getElementById("english").innerHTML = "";
+            var word = document.getElementById("sinhala_name").value;
+            alphaone.translate(1, 3, word, 3, "FirstName", "AWS",getEnglishResponse);
+        }
+        function getEnglishResponse() {
+            var wordArray = this.response.wordList;
+            document.getElementById("english_name").value = wordArray[0];
+            wordArray.forEach((element) => {
+                document.getElementById("english").innerHTML +=
+                    "<option>" + element + "</option>";
+            });
+        }
+        function translateToTamil() {
+            document.getElementById("tamil_name").value = "";
+            document.getElementById("tamil").innerHTML = "";
+            var word = document.getElementById("sinhala_name").value;
+            alphaone.translate(1, 2, word, 3,"FirstName","AWS", getTamilResponse);
+        }
+        function getTamilResponse() {
+            var wordArray = this.response.wordList;
+            document.getElementById("tamil_name").value = wordArray[0];
+            wordArray.forEach((element) => {
+                document.getElementById("tamil").innerHTML +=
+                    "<option>" + element + "</option>";
+            });
+        }
+    </script></div>
+    <div class="footer-dark">
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6 col-md-3 item">
+                        <h3>Services</h3>
+                        <ul>
+                            <li><a href="#">Web design</a></li>
+                            <li><a href="#">Development</a></li>
+                            <li><a href="#">Hosting</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-6 col-md-3 item">
+                        <h3>About</h3>
+                        <ul>
+                            <li><a href="#">Company</a></li>
+                            <li><a href="#">Team</a></li>
+                            <li><a href="#">Careers</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6 item text">
+                        <h3>Pulz Technologies</h3>
+                        <p>Our administrative offices are located in New York, USA and our innovation Laboratory and Technology Center in Colombo, Sri Lanka.<br><br></p>
+                    </div>
+                    <div class="col item social"><a href="#"><i class="icon ion-social-facebook"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-instagram"></i></a></div>
+                </div>
+                <p class="copyright">Pulz Tec © 2017</p>
+            </div>
+        </footer>
+    </div>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/app.js"></script>
+    <script src="assets/js/constants.js"></script>
+    <script src="assets/js/document.js"></script>
+    <script src="assets/js/english.js"></script>
+    <script src="assets/js/englishEmail.js"></script>
+    <script src="assets/js/englishHouseNumber.js"></script>
+    <script src="assets/js/englishNIC.js"></script>
+    <script src="assets/js/englishProfession.js"></script>
+    <script src="assets/js/englishTitle.js"></script>
+    <script src="assets/js/form.js"></script>
+    <script src="assets/js/keyboard.js"></script>
+    <script src="assets/js/numberpad.js"></script>
+    <script src="assets/js/sihalaProfession.js"></script>
+    <script src="assets/js/sinhala.js"></script>
+    <script src="assets/js/sinhalaEmail.js"></script>
+    <script src="assets/js/sinhalaHouseNumber.js"></script>
+    <script src="assets/js/sinhalaNIC.js"></script>
+    <script src="assets/js/sinhalaNumberpad.js"></script>
+    <script src="assets/js/sinhalaTitle.js"></script>
+    <script src="assets/js/tamil.js"></script>
+    <script src="assets/js/tamilEmail.js"></script>
+    <script src="assets/js/tamilHouseNumber.js"></script>
+    <script src="assets/js/tamilNIC.js"></script>
+    <script src="assets/js/tamilNumberpad.js"></script>
+    <script src="assets/js/tamilProfession.js"></script>
+    <script src="assets/js/tamilTitle.js"></script>
+    <script src="assets/js/voice.js"></script>
+</body>
+
+</html>

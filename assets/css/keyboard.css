@@ -1,0 +1,417 @@
+/* change the selected text color and background color */
+
+.input-focus::selection {
+  color: #025da6;
+  background: white;
+}
+
+/* css for keybord Window */
+
+.keybord-modal {
+  display: none;
+  position: fixed;
+  z-index: 10;
+  padding-top: 50px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4);
+}
+
+/* css for keybord Window Content area language keyboard */
+
+.keybord-modal-content {
+  background-color: #F5F5F5;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  margin-top: 270px;
+}
+
+/* css for keybord Window Content area number keyboard */
+
+.keybord-modal-content-number {
+  background-color: #F5F5F5;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 50%;
+  margin-top: 270px;
+}
+
+/* css for keybord Window Close Button */
+
+.keybord-close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+/* style the keybord key when it gets focus and mouse over it */
+
+.keybord-close:hover, .keybord-close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* css for keybord keypad container div */
+
+.container-keybord-keypad {
+  position: relative;
+  width: 100%;
+}
+
+/* css for keybord key container */
+
+.container-keybord-key {
+  padding: 0px 2px 0px 2px !important;
+  margin: 2px 0px 2px 0px !important;
+  height: 3em;
+}
+
+/* css for keybord key */
+
+.btn-keybord {
+  height: 1.9em;
+  color: white;
+  background-color: #8E8E8E;
+  border-color: #8E8E8E;
+  font-weight: 500;
+  font-size: 1.5em;
+  padding: 0px 0px 0px 0px;
+  margin: 0px 0px 0px 0px;
+}
+
+/* style the active keybord key */
+
+.btn-keybord:active {
+  background: #025da6 !important;
+  border: 1px solid #025da6 !important;
+  outline: none;
+  box-shadow: none !important;
+}
+
+/* style the keybord key when it gets focus */
+
+.btn-keybord:focus {
+  outline: none !important;
+  border: 1px solid #025da6;
+  box-shadow: 0 0 10px #025da6;
+  background-color: #025da6;
+}
+
+/* style the keybord key when you mouse over it */
+
+.btn-keybord:hover {
+  background-color: #025da6;
+  border: 1px solid #025da6;
+  box-shadow: 0 0 10px #025da6;
+}
+
+/* css for keybord enter key colour */
+
+.btn-enter {
+  background-color: #025da6;
+  border: 1px solid #025da6 !important;
+}
+
+/* control space around keybord secon row keys */
+
+.row-second-padding {
+  padding: 0px 6% 0px 6% !important;
+}
+
+/* control space around keybord third row keys */
+
+.row-third-padding {
+  padding: 0px 15% 0px 15% !important;
+}
+
+/* css for suggestion panel: horizontal scrollable panel */
+
+div.suggestion-panel {
+  background-color: #333;
+  max-width: 100%;
+  overflow: auto;
+  width: 100%;
+  display: block;
+  white-space: nowrap;
+  min-height: 58px;
+}
+
+/* width */
+
+::-webkit-scrollbar {
+  height: 0px;
+}
+
+/* sets the bottom margin of suggestion panel. */
+
+.suggestion-panel-margin-bottom {
+  margin-bottom: 0.4em;
+}
+
+.zero-width {
+  width: 0 !important;
+}
+
+/* css for suggestion panel button */
+
+div.suggestion-panel a {
+  display: inline-block;
+  color: white;
+  font-size: 2em;
+  text-align: center;
+  padding: 5px 28px 5px 28px;
+  text-decoration: none;
+}
+
+/* style the suggestion panel button when you mouse over it */
+
+div.suggestion-panel a:hover {
+  background-color: #777;
+}
+
+/* css for left scroll button in suggestion panel */
+
+.container-keybord-keypad .a-tag-previous {
+  position: absolute;
+  text-decoration: none;
+  top: 29px;
+  left: 4px;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color: #555;
+  color: white;
+  font-size: 34px;
+  padding: 1px 10px 7px 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 0px;
+  text-align: center;
+}
+
+/* css for right scroll button in suggestion panel */
+
+.container-keybord-keypad .a-tag-next {
+  position: absolute;
+  text-decoration: none;
+  top: 29px;
+  right: -16px;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color: #555;
+  color: white;
+  font-size: 34px;
+  padding: 1px 10px 7px 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 0px;
+  text-align: center;
+}
+
+/* style the scroll button when you mouse over it */
+
+.scroll-button:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* If the browser window width is 992px-768px, style will be change as below */
+
+/* css for keybord Window Content area number keyboard */
+
+@media (max-width: 992px) {
+  .keybord-modal-content-number {
+    margin: 12px 100px 12px 100px;
+    padding: 12px;
+    width: 80%;
+  }
+}
+
+/* If the browser window width is 768px-500px, style will be change as below */
+
+/* css for keybord Window Content area */
+
+@media (max-width: 768px) {
+  .keybord-modal-content {
+    margin: 12px;
+    padding: 12px;
+    width: 95%;
+  }
+}
+
+/* css for keybord Window Content area number keyboard */
+
+@media (max-width: 768px) {
+  .keybord-modal-content-number {
+    margin: 12px;
+    padding: 12px;
+    width: 95%;
+  }
+}
+
+/* css for keybord key container */
+
+@media (max-width: 768px) {
+  .container-keybord-key {
+    padding: 0px 2px 0px 2px !important;
+    margin: 1px 0px 1px 0px !important;
+    height: 3.4em;
+  }
+}
+
+/* css for keybord key */
+
+@media (max-width: 768px) {
+  .btn-keybord {
+    height: 2.8em;
+    color: white;
+    background-color: #8E8E8E;
+    border-color: #8E8E8E;
+    font-weight: 500;
+    font-size: 1em;
+    padding: 0px 0px 0px 0px;
+    margin: 0px 0px 0px 0px;
+  }
+}
+
+/* css for keybord enter key colour */
+
+@media (max-width: 768px) {
+  .btn-enter {
+    background-color: #025da6;
+    border: 1px solid #025da6 !important;
+  }
+}
+
+/* If the browser window width is 768px-500px, style will be change as below */
+
+/* css for keybord Window Content area */
+
+@media only screen and (max-width: 500px) {
+  .keybord-modal-content {
+    margin: 1px;
+    padding: 1px;
+    width: 99%;
+  }
+}
+
+/* css for keybord Window Content area number keyboard */
+
+@media only screen and (max-width: 500px) {
+  .keybord-modal-content-number {
+    margin: 1px;
+    padding: 1px;
+    width: 99%;
+  }
+}
+
+/* css for keybord key container */
+
+@media only screen and (max-width: 500px) {
+  .container-keybord-key {
+    padding: 0px 2px 0px 2px !important;
+    margin: 1px 0px 1px 0px !important;
+    height: 3.4em;
+  }
+}
+
+/* css for keybord key */
+
+@media only screen and (max-width: 500px) {
+  .btn-keybord {
+    height: 2.8em;
+    color: white;
+    background-color: #8E8E8E;
+    border-color: #8E8E8E;
+    font-weight: 500;
+    font-size: 1em;
+    padding: 0px 0px 0px 0px;
+    margin: 0px 0px 0px 0px;
+  }
+}
+
+/* css for keybord enter key colour */
+
+@media only screen and (max-width: 500px) {
+  .btn-enter {
+    background-color: #025da6;
+    border: 1px solid #025da6 !important;
+  }
+}
+
+.input-field {
+  width: 468px;
+  border-radius: 12px;
+  height: 50px;
+  margin: 24px 376px;
+}
+
+.btn-delete {
+  color: floralwhite;
+  background-color: maroon;
+}
+
+.btn-variation {
+  background-color: #0e68ad;
+}
+
+#inputTextCol {
+  padding-right: 0px !important;
+  padding-left: 0px !important;
+  margin-bottom: 10px;
+}
+
+#suggestionBarCol {
+  background-color: #000;
+  margin-bottom: 10px;
+  font-size: 25px;
+  height: 50px;
+  overflow-y: hidden;
+}
+
+#suggestionList {
+  width: 10000px;
+}
+
+.word {
+  font-size: 20px;
+  color: #FFF;
+  cursor: pointer;
+}
+
+.word:hover {
+  border-bottom: 1px solid #FFF;
+}
+
+#backButton {
+  height: 50px;
+  background-color: #8E8E8E;
+  border-color: #8E8E8E;
+}
+
+#nextButton {
+  height: 50px;
+  background-color: #8E8E8E;
+  border-color: #8E8E8E;
+}
+
+span.active {
+  color: rgb(54, 54, 190);
+}
+
+span {
+  color: #FFF;
+}
+
+#inputText {
+  font-size: 22px;
+}
+
